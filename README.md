@@ -1,5 +1,7 @@
 # vue3-ts-cms
 
+> 此项目是为了练习 Vue3+ts
+
 ## Project setup
 
 ```

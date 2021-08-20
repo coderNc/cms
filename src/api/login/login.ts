@@ -1,0 +1,1 @@
+import { ncRuquest } from '@/api';
