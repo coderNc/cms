@@ -1,6 +1,6 @@
-import axios, { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { NCRequestConfig, NCRequestInterceptors } from '@/api/request/type';
-import { ElLoading } from 'element-plus';
+import { ElLoading, ElMessage as Message } from 'element-plus';
 import { ILoadingInstance } from 'element-plus/lib/el-loading/src/loading.type';
 
 class NCRequest {
@@ -43,17 +43,10 @@ class NCRequest {
       (res) => {
         this.loading?.close();
         const { data } = res;
-        if (data.returnCode == '-1001') {
-          console.log('err');
-        }
         return data;
       },
       (err) => {
-        setTimeout(() => {
-          this.loading?.close();
-        }, 3000);
-
-        return err;
+        return err.response;
       }
     );
   }
@@ -73,7 +66,7 @@ class NCRequest {
           if (config.interceptors?.responseInterceptor) {
             res = config.interceptors.responseInterceptor(res);
           }
-          return resolve(res);
+          resolve(res);
         })
         .catch((err) => {
           reject(err);

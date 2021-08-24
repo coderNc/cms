@@ -30,12 +30,26 @@ export default defineComponent({
       if (isInit) {
         page_cofig.value.page_index = 1;
       }
-      const res = await ncRuquest.get<DataType>({
-        url: '/home/multidata',
+      const res = await ncRuquest.post({
+        url: 'login',
+        data: {
+          name: 'coderwhy',
+          password: '123456'
+        },
         showLoading: true
       });
       console.log(res);
     }
+    async function getmusic() {
+      const res = await ncRuquest.get<any>({
+        url: '/search',
+        params: {
+          keywords: '海阔天空'
+        }
+      });
+      console.log(res);
+    }
+    // getmusic();
     // getList(true);
     return {
       id,

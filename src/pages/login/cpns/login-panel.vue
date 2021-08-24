@@ -1,80 +1,62 @@
 <template>
   <div class="panel">
-    <h2>后台管理系统</h2>
+    <h2 class="panel-title">后台管理系统</h2>
     <div class="text item">
-      <el-tabs type="border-card" stretch>
-        <el-tab-pane>
+      <el-tabs type="border-card" stretch v-model="currentTab">
+        <el-tab-pane name="account">
           <template #label>
             <span><i class="el-icon-s-custom"></i> 账号登录</span>
           </template>
-          <el-form
-            :model="formData"
-            :rules="rules"
-            ref="ruleForm"
-            label-width="60px"
-            class="demo-ruleForm"
-          >
-            <el-form-item label="账号" prop="username">
-              <el-input v-model="formData.username" />
-            </el-form-item>
-            <el-form-item label="密码" prop="password">
-              <el-input v-model="formData.password" type="password" />
-            </el-form-item>
-            <el-form-item>
-              <el-checkbox v-model="isKeepPswd">记住密码</el-checkbox>
-              <el-link type="success">忘记密码</el-link>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="login('ruleForm')"
-                >登录</el-button
-              >
-            </el-form-item>
-          </el-form>
+          <login-account ref="accountRef" />
         </el-tab-pane>
-        <el-tab-pane>
+        <el-tab-pane name="phone">
           <template #label>
             <span><i class="el-icon-mobile-phone"></i> 手机登录</span>
           </template>
-          我的行程
+          <login-phone ref="phoneRef" />
         </el-tab-pane>
       </el-tabs>
+      <div class="btn-group">
+        <el-checkbox v-model="isKeepPswd">记住密码</el-checkbox>
+        <el-link type="primary">忘记密码</el-link>
+      </div>
+      <el-button type="primary" @click="handleLogin" class="btn-lang"
+        >登录</el-button
+      >
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import LoginAccount from './login-account.vue';
+import LoginPhone from './login-phone.vue';
 
 export default defineComponent({
+  components: {
+    LoginAccount,
+    LoginPhone
+  },
   setup() {
-    const isKeepPswd = ref<boolean>(true);
-    const formData = ref({
-      username: '',
-      password: ''
-    });
-    const rules = {
-      username: [
-        { required: true, message: '请输入用户名', trigger: 'blur' },
-        { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
-      ],
-      password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
-        {
-          min: 6,
-          max: 15,
-          message: '密码长度在 6 到 15 个字符',
-          trigger: 'blur'
-        }
-      ]
-    };
-    function login(formName: any) {
-      console.log(formName);
+    const isKeepPswd = ref(true);
+    const currentTab = ref('account');
+    // 每一个组件的对象类型
+    const accountRef = ref<InstanceType<typeof LoginAccount>>();
+    const phoneRef = ref<InstanceType<typeof LoginPhone>>();
+    function handleLogin() {
+      if (currentTab.value === 'account') {
+        accountRef.value?.login(isKeepPswd.value);
+      } else {
+        phoneRef.value?.login();
+      }
     }
+
     return {
       isKeepPswd,
-      formData,
-      rules,
-      login
+      accountRef,
+      phoneRef,
+      currentTab,
+      handleLogin
     };
   }
 });
@@ -85,8 +67,25 @@ export default defineComponent({
   margin-bottom: 18px;
   width: 380px;
 }
+.panel {
+  .panel-title {
+    text-align: center;
+  }
 
+  .btn-lang {
+    width: 100%;
+  }
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
 .box-card {
   width: 380px;
 }
+/* .fr {
+  float: right;
+} */
 </style>
