@@ -2,60 +2,47 @@
   <div class="nav-menu">
     <div class="logo">
       <img class="img" src="~@/assets/img/logo.svg" alt="logo" />
-      <span class="title">Vue3+Ts</span>
+      <span v-if="!collapse" class="title">Vue3+Ts</span>
     </div>
     <div>
       <el-menu
-        default-active="1-4-1"
+        default-active="2"
         class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        :collapse="isCollapse"
+        :collapse="collapse"
+        background-color="#0c2135"
+        text-color="#b7bdc3"
+        active-text-color="#0a60bd"
       >
-        <el-submenu index="1">
-          <template #title>
-            <i class="el-icon-location"></i>
-            <span>导航一</span>
-          </template>
-          <el-menu-item-group>
-            <template #title>分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template #title>选项4</template>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <template #title>导航二</template>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-          <i class="el-icon-document"></i>
-          <template #title>导航三</template>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <template #title>导航四</template>
-        </el-menu-item>
+        <menu-item
+          v-for="(item, index) in userMenus"
+          :key="index"
+          :itemData="item"
+        />
       </el-menu>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { useStore } from '@/store';
+import MenuItem from './menu-item.vue';
 
 export default defineComponent({
+  props: {
+    collapse: {
+      type: Boolean,
+      default: false
+    }
+  },
+  components: {
+    MenuItem
+  },
   setup() {
-    const id = 12;
-
+    const store = useStore();
+    const userMenus = computed(() => store.state.login.userMenus);
     return {
-      id
+      userMenus
     };
   }
 });
@@ -89,5 +76,33 @@ export default defineComponent({
   .el-menu {
     border-right: none;
   }
+  // 目录
+  .el-submenu {
+    background-color: #001529 !important;
+    // 二级菜单 ( 默认背景 )
+    .el-menu-item {
+      padding-left: 50px !important;
+      background-color: #0c2135 !important;
+    }
+  }
+
+  ::v-deep .el-submenu__title {
+    background-color: #001529 !important;
+  }
+
+  // hover 高亮
+  .el-menu-item:hover {
+    color: #fff !important; // 菜单
+  }
+
+  .el-menu-item.is-active {
+    color: #fff !important;
+    background-color: #0a60bd !important;
+  }
+}
+
+.el-menu-vertical:not(.el-menu--collapse) {
+  width: 100%;
+  height: calc(100% - 48px);
 }
 </style>
