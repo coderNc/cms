@@ -9,6 +9,7 @@ import {
 } from '@/api/login/login';
 import { IAccount } from '@/api/login/type';
 import localCache from '@/utils/cache';
+import { mapMenuToRoutes } from '@/utils/map-menu';
 import { IUserResult, IUserMenuResult } from '@/api/login/type';
 
 // Module接受两个参数 Module<S, R>S是自己模块state的类型；R是根模块state的类型
@@ -29,8 +30,16 @@ const loginModule: Module<ILoginState, IRootState> = {
     changeUserInfo(state, userInfo: IUserResult) {
       state.userInfo = userInfo;
     },
-    changeUserMenus(state, userMenus: IUserMenuResult) {
+    changeUserMenus(state, userMenus: IUserMenuResult[]) {
       state.userMenus = userMenus;
+      // 将菜单映射到路由对象 userMenus => routes
+      const routes = mapMenuToRoutes(userMenus);
+      // console.log(routes);
+
+      // 将routes添加到router.main.children
+      routes.forEach((route) => {
+        router.addRoute('main', route);
+      });
     }
   },
   actions: {
@@ -62,15 +71,15 @@ const loginModule: Module<ILoginState, IRootState> = {
     },
     // 每次页面刷新，将localstorge的数据保存到vuex中
     loadLocaleLogin({ commit }, payload) {
-      const token = localCache.getCache('token');
+      const token: string = localCache.getCache('token');
       if (token) {
         commit('changeToken', token);
       }
-      const userInfo = localCache.getCache('userInfo');
+      const userInfo: IUserResult = localCache.getCache('userInfo');
       if (userInfo) {
         commit('changeUserInfo', userInfo);
       }
-      const userMenus = localCache.getCache('userMenus');
+      const userMenus: IUserMenuResult[] = localCache.getCache('userMenus');
       if (userMenus) {
         commit('changeUserMenus', userMenus);
       }

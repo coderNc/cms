@@ -27,7 +27,7 @@ export function getUserInfoRequest(id: number) {
 }
 // 根据ID获取个人菜单信息
 export function getUserMenuRequest(id: number) {
-  return ncRuquest.get<IDataType<IUserMenuResult>>({
+  return ncRuquest.get<IDataType<IUserMenuResult[]>>({
     url: LoginAPI.GetUserMenu + id + '/menu'
   });
 }

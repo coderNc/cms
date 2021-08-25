@@ -46,10 +46,10 @@ export interface IUserMenuResult {
   url: string;
   icon: string;
   sort: number;
-  children?: Children[];
+  children: IUserMenuResult[];
 }
 
-export interface Children {
+/* export interface Children {
   id: number;
   url: string;
   name: string;
@@ -57,4 +57,4 @@ export interface Children {
   type: number;
   children?: Children[];
   parentId: number;
-}
+} */
