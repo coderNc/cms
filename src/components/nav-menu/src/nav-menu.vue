@@ -6,7 +6,7 @@
     </div>
     <div>
       <el-menu
-        default-active="2"
+        :default-active="currentIndex"
         class="el-menu-vertical-demo"
         :collapse="collapse"
         background-color="#0c2135"
@@ -24,9 +24,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import { useStore } from '@/store';
+import { useRoute } from 'vue-router';
 import MenuItem from './menu-item.vue';
+import { pathMapToMenu } from '@/utils/map-menu';
 
 export default defineComponent({
   props: {
@@ -40,9 +42,17 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    const route = useRoute();
+    const path = route.path;
     const userMenus = computed(() => store.state.login.userMenus);
+    // 获取路由对应的菜单
+    const menu = pathMapToMenu(userMenus.value, path);
+
+    const currentIndex = ref(menu.id + '');
     return {
-      userMenus
+      userMenus,
+      currentIndex,
+      menu
     };
   }
 });

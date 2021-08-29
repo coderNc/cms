@@ -11,6 +11,7 @@ export const searchFormConfig: IForm = {
   formItems: [
     {
       type: 'Input',
+      filed: 'id',
       label: 'id',
       inputConfig: {
         placeholder: '请输入id'
@@ -18,6 +19,7 @@ export const searchFormConfig: IForm = {
     },
     {
       type: 'Input',
+      filed: 'name',
       label: '用户名',
       inputConfig: {
         placeholder: '请输入用户名'
@@ -26,7 +28,7 @@ export const searchFormConfig: IForm = {
     {
       type: 'Input',
       label: '密码',
-
+      filed: 'password',
       inputConfig: {
         type: 'password',
         placeholder: '请输入密码',
@@ -35,6 +37,7 @@ export const searchFormConfig: IForm = {
     },
     {
       type: 'Select',
+      filed: 'sports',
       label: '喜欢的运动',
       selectConfig: {
         placeholder: '请选择喜欢的运动',
@@ -49,6 +52,7 @@ export const searchFormConfig: IForm = {
     },
     {
       type: 'DatePicker',
+      filed: 'createTime',
       label: '创建时间',
       otherOptions: {
         startPlaceholder: '开始时间',
@@ -56,18 +60,19 @@ export const searchFormConfig: IForm = {
         type: 'daterange'
       },
       datePickerConfig: {
-        type: 'daterange',
+        type: 'date',
         format: 'YYYY 年 MM 月 DD 日',
         size: 'large',
         valueFormat: 'x',
         rangeSeparator: '至',
         startPlaceholder: 'n',
-        endPlaceholder: 'c',
-        defaultTime: [new Date(2010, 9, 1), new Date(2010, 10, 1)]
+        endPlaceholder: 'c'
+        // defaultTime: [new Date(2010, 9, 1), new Date(2010, 10, 1)]
       }
     },
     {
       type: 'Input',
+      filed: 'desc',
       label: '备注',
       inputConfig: {
         type: 'textarea',

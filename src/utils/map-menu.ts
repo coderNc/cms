@@ -1,5 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
 import { IUserMenuResult } from '@/api/login/type';
+import { IBreadCrumb } from '@/base-ui/BreadCrumb/type';
+let firstMenu: any = undefined;
 
 export function mapMenuToRoutes(
   userMenus: IUserMenuResult[]
@@ -24,6 +26,9 @@ export function mapMenuToRoutes(
       if (menu.type === 2) {
         const route = allRoutes.find((route) => route.path === menu.url);
         if (route) routes.push(route);
+        if (!firstMenu) {
+          firstMenu = menu;
+        }
       } else {
         _recurseGetRoute(menu.children);
       }
@@ -33,3 +38,31 @@ export function mapMenuToRoutes(
   _recurseGetRoute(userMenus);
   return routes;
 }
+
+export function pathMapBreadcrumbs(userMenus: any[], currentPath: string) {
+  const breadcrumbs: IBreadCrumb[] = [];
+  pathMapToMenu(userMenus, currentPath, breadcrumbs);
+  return breadcrumbs;
+}
+// 路径匹配菜单
+export function pathMapToMenu(
+  userMenus: IUserMenuResult[],
+  path: string,
+  breadcrumbs?: IBreadCrumb[]
+): any {
+  console.log(path);
+  for (const menu of userMenus) {
+    if (menu.type === 1) {
+      const findMenu = pathMapToMenu(menu.children ?? [], path);
+      if (findMenu) {
+        breadcrumbs?.push({ name: menu.name });
+        breadcrumbs?.push({ name: findMenu.name });
+        return findMenu;
+      }
+    } else if (menu.type === 2 && menu.url === path) {
+      return menu;
+    }
+  }
+}
+
+export { firstMenu };

@@ -17,6 +17,7 @@ type IDatePickerType =
   | 'monthrange';
 
 export interface IFormItem {
+  filed: string; // 字段
   type: IFormType;
   label: string;
   rules?: any[];
