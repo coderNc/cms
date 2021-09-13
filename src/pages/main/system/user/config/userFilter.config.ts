@@ -1,6 +1,7 @@
 import { IForm } from '@/base-ui/form';
 
 export const searchFormConfig: IForm = {
+  title: '用户配置',
   labelWidth: '120px',
   itemLayout: {
     padding: '10px 40px'

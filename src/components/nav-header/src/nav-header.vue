@@ -27,9 +27,11 @@ export default defineComponent({
     const store = useStore();
     const userMenus = store.state.login.userMenus;
     const route = useRoute();
-    const path = route.path;
+    console.log(route);
+    const path = ref(route.path);
+
     // 根据路径返回面包屑数组
-    const breadCrumbs = pathMapBreadcrumbs(userMenus, path);
+    const breadCrumbs = pathMapBreadcrumbs(userMenus, path.value);
     const isFold = ref(false);
     function handleFoldChange() {
       isFold.value = !isFold.value;
@@ -39,6 +41,7 @@ export default defineComponent({
     return {
       isFold,
       breadCrumbs,
+      path,
       handleFoldChange
     };
   }

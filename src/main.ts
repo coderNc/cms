@@ -8,8 +8,10 @@ import 'normalize.css';
 import '@/assets/css/index.scss';
 
 const app = createApp(App);
-setupStore();
+
 app.use(globalRegister);
-app.use(router);
+
 app.use(store);
+setupStore();
+app.use(router);
 app.mount('#app');

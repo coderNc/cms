@@ -3,6 +3,7 @@ import { IUserMenuResult } from '@/api/login/type';
 import { IBreadCrumb } from '@/base-ui/BreadCrumb/type';
 let firstMenu: any = undefined;
 
+// 根据菜单动态生成路由
 export function mapMenuToRoutes(
   userMenus: IUserMenuResult[]
 ): RouteRecordRaw[] {
@@ -38,7 +39,7 @@ export function mapMenuToRoutes(
   _recurseGetRoute(userMenus);
   return routes;
 }
-
+// 路径匹配面包屑
 export function pathMapBreadcrumbs(userMenus: any[], currentPath: string) {
   const breadcrumbs: IBreadCrumb[] = [];
   pathMapToMenu(userMenus, currentPath, breadcrumbs);
@@ -50,7 +51,7 @@ export function pathMapToMenu(
   path: string,
   breadcrumbs?: IBreadCrumb[]
 ): any {
-  console.log(path);
+  // console.log(path);
   for (const menu of userMenus) {
     if (menu.type === 1) {
       const findMenu = pathMapToMenu(menu.children ?? [], path);

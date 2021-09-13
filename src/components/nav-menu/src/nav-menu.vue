@@ -47,8 +47,10 @@ export default defineComponent({
     const userMenus = computed(() => store.state.login.userMenus);
     // 获取路由对应的菜单
     const menu = pathMapToMenu(userMenus.value, path);
+    console.log(menu);
 
     const currentIndex = ref(menu.id + '');
+    // const currentIndex = ref('1');
     return {
       userMenus,
       currentIndex,

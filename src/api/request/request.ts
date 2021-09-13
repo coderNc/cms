@@ -3,7 +3,7 @@ import { NCRequestConfig, NCRequestInterceptors } from '@/api/request/type';
 import { ElLoading, ElMessage as Message } from 'element-plus';
 import { ILoadingInstance } from 'element-plus/lib/el-loading/src/loading.type';
 
-class NCRequest {
+class Request {
   instance: AxiosInstance;
   interceptors?: NCRequestInterceptors;
   showLoading: boolean;
@@ -88,4 +88,4 @@ class NCRequest {
     return this.request<T>({ ...config, method: 'DELETE' });
   }
 }
-export default NCRequest;
+export default Request;

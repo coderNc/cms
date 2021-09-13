@@ -20,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: () => import('@/pages/not-found/404.vue')
+  },
+  {
+    path: '/code',
+    name: 'code',
+    component: () => import('@/pages/test/code.vue')
   }
 ];
 

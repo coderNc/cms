@@ -63,6 +63,7 @@ export interface IFormItem {
 
 export interface IForm {
   formItems: IFormItem[];
+  title?: string;
   labelWidth?: string;
   colLayout: any;
   itemLayout: any;
