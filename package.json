@@ -6,11 +6,16 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "build:pre": "vue-cli-service build --mode pre",
+    "build:pro": "vue-cli-service build --mode production",
+    "build:test": "vue-cli-service build --mode test",
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "commit": "cz"
   },
   "dependencies": {
+    "@sentry/tracing": "^7.17.3",
+    "@sentry/vue": "^7.17.3",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
@@ -22,6 +27,7 @@
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@sentry/webpack-plugin": "^1.20.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
