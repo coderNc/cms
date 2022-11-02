@@ -31,13 +31,28 @@
         </el-table-column>
       </template>
       <template v-for="(item, index) in propList" :key="index">
-        <el-table-column v-bind="item">
-          <template #default="scope">
-            <slot :name="item.slotName" :row="scope.row">{{
-              scope.row[item.prop]
-            }}</slot>
-          </template>
-        </el-table-column>
+        <template v-if="item?.children">
+          <el-table-column v-bind="item">
+            <template v-for="(subItem, idx) in item?.children" :key="idx">
+              <el-table-column v-bind="subItem">
+                <template #default="scope">
+                  <slot :name="subItem?.slotName" :row="scope.row">{{
+                    scope.row[subItem.prop]
+                  }}</slot>
+                </template>
+              </el-table-column>
+            </template>
+          </el-table-column></template
+        >
+        <template v-else>
+          <el-table-column v-bind="item">
+            <template #default="scope">
+              <slot :name="item?.slotName" :row="scope.row">{{
+                scope.row[item.prop]
+              }}</slot>
+            </template>
+          </el-table-column>
+        </template>
       </template>
     </el-table>
     <div class="footer">
@@ -59,6 +74,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+import { ITableColumn } from '@/base-ui/Table/type';
 
 export default defineComponent({
   props: {
@@ -66,7 +82,7 @@ export default defineComponent({
       type: Array
     },
     propList: {
-      type: Array as PropType<any>
+      type: Array as PropType<ITableColumn[]>
     },
     title: {
       type: String,

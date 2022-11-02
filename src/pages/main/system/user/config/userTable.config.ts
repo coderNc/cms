@@ -14,7 +14,23 @@ export const userTableConfig: ItableConfig = {
       label: '用户名',
       minWidth: '150',
       align: 'center',
-      slotName: 'name'
+      slotName: 'name',
+      children: [
+        {
+          prop: 'id',
+          label: 'id1',
+          minWidth: '150',
+          align: 'center',
+          slotName: 'id1'
+        },
+        {
+          prop: 'id',
+          label: 'id2',
+          minWidth: '150',
+          align: 'center',
+          slotName: 'id2'
+        }
+      ]
     },
     {
       prop: 'realname',

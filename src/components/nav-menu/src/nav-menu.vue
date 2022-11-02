@@ -49,7 +49,7 @@ export default defineComponent({
     const menu = pathMapToMenu(userMenus.value, path);
     console.log(menu);
 
-    const currentIndex = ref(menu.id + '');
+    const currentIndex = ref(menu?.id + '');
     // const currentIndex = ref('1');
     return {
       userMenus,

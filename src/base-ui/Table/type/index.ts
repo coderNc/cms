@@ -4,6 +4,7 @@ export interface ITableColumn {
   minWidth?: string; // 最小宽度
   align?: string; // 对齐方式
   slotName?: string; // 插槽名称
+  children?: ITableColumn[];
 }
 export interface ItableConfig {
   title?: string;

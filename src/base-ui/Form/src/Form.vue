@@ -94,12 +94,6 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const formData1 = ref({
-      id: 1,
-      name: 'coderwhy',
-      password: '123456',
-      date: ''
-    });
     const formData = ref({ ...props.modelValue });
     watch(
       formData,
@@ -108,7 +102,7 @@ export default defineComponent({
       },
       { deep: true }
     );
-    return { formData1, formData };
+    return { formData };
   }
 });
 </script>

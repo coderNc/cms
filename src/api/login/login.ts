@@ -7,11 +7,18 @@ import {
   IUserMenuResult
 } from './type';
 // 枚举将所有URL接口
-enum LoginAPI {
+export enum LoginAPI {
   AccountLogin = '/login',
   GetUserInfo = '/users/',
   GetUserMenu = '/role/'
 }
+
+const test = (testapi: LoginAPI) => {
+  console.log(testapi);
+};
+
+test(LoginAPI.AccountLogin);
+
 // 账号登录接口
 export function accountLoginRequest(account: IAccount) {
   return ncRuquest.post<IDataType<ILoginResult>>({
