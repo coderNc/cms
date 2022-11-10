@@ -11,6 +11,10 @@ import '@/assets/css/index.scss';
 
 const app = createApp(App);
 
+const rrlog = (key: any, value: any) => {
+  console.log(`==============${key}============`, value);
+};
+
 Sentry.init({
   app,
   dsn: 'http://68314a3acc034e228b20e1113ca6e45f@127.0.0.1:9000/2',
@@ -27,7 +31,12 @@ Sentry.init({
   // We recommend adjusting this value in production
   //  高访问量应用可以控制上报百分比
   tracesSampleRate: 1.0,
-  release: process.env.SENTRY_VERSION || '0.0.1' // 版本号，每次都npm run build上传都修改版本号
+  release: process.env.SENTRY_VERSION || '0.0.1', // 版本号，每次都npm run build上传都修改版本号
+  beforeSend: (event, hint) => {
+    rrlog('event', event);
+    rrlog('hint', hint);
+    return event;
+  }
 });
 
 app.use(globalRegister);
