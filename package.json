@@ -14,8 +14,8 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@sentry/tracing": "^7.17.3",
-    "@sentry/vue": "^7.17.3",
+    "@sentry/tracing": "^7.18.0",
+    "@sentry/vue": "^7.18.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",

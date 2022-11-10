@@ -1023,14 +1023,14 @@
   resolved "https://registry.nlark.com/@popperjs/core/download/@popperjs/core-2.9.3.tgz?cache=0&sync_timestamp=1628004797304&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
   integrity sha1-i2jaHr1/xgOZnPbr7jSkiZoUuI4=
 
-"@sentry/browser@7.17.3":
-  version "7.17.3"
-  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/browser/-/browser-7.17.3.tgz#4e67b2d8d90df11b37f29061fec3259eedca0a4a"
-  integrity sha1-Tmey2NkN8Rs38pBh/sMlnu3KCko=
+"@sentry/browser@7.18.0":
+  version "7.18.0"
+  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/browser/-/browser-7.18.0.tgz#3eae6bb07705ce2a05bff898effc6ece6cc4087b"
+  integrity sha1-Pq5rsHcFzioFv/iY7/xuzmzECHs=
   dependencies:
-    "@sentry/core" "7.17.3"
-    "@sentry/types" "7.17.3"
-    "@sentry/utils" "7.17.3"
+    "@sentry/core" "7.18.0"
+    "@sentry/types" "7.18.0"
+    "@sentry/utils" "7.18.0"
     tslib "^1.9.3"
 
 "@sentry/cli@^1.74.6":
@@ -1046,47 +1046,47 @@
     proxy-from-env "^1.1.0"
     which "^2.0.2"
 
-"@sentry/core@7.17.3":
-  version "7.17.3"
-  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/core/-/core-7.17.3.tgz#2b45c0507f1ef7018335b9bb61ed6b3f16accfad"
-  integrity sha1-K0XAUH8e9wGDNbm7Ye1rPxasz60=
+"@sentry/core@7.18.0":
+  version "7.18.0"
+  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/core/-/core-7.18.0.tgz#9fe4c6f45086c20ad45a6357a33381a500a8b704"
+  integrity sha1-n+TG9FCGwgrUWmNXozOBpQCotwQ=
   dependencies:
-    "@sentry/types" "7.17.3"
-    "@sentry/utils" "7.17.3"
+    "@sentry/types" "7.18.0"
+    "@sentry/utils" "7.18.0"
     tslib "^1.9.3"
 
-"@sentry/tracing@^7.17.3":
-  version "7.17.3"
-  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/tracing/-/tracing-7.17.3.tgz#7680d3e365d1df51943f0c360345e17f59ea784a"
-  integrity sha1-doDT42XR31GUPww2A0Xhf1nqeEo=
+"@sentry/tracing@^7.18.0":
+  version "7.18.0"
+  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/tracing/-/tracing-7.18.0.tgz#2a3cbe770cb3483a2611dfadc5a669cbbe9e4c64"
+  integrity sha1-Kjy+dwyzSDomEd+txaZpy76eTGQ=
   dependencies:
-    "@sentry/core" "7.17.3"
-    "@sentry/types" "7.17.3"
-    "@sentry/utils" "7.17.3"
+    "@sentry/core" "7.18.0"
+    "@sentry/types" "7.18.0"
+    "@sentry/utils" "7.18.0"
     tslib "^1.9.3"
 
-"@sentry/types@7.17.3":
-  version "7.17.3"
-  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/types/-/types-7.17.3.tgz#ec66ea7b6881ae243255546680722488e7ff23bf"
-  integrity sha1-7Gbqe2iBriQyVVRmgHIkiOf/I78=
+"@sentry/types@7.18.0":
+  version "7.18.0"
+  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/types/-/types-7.18.0.tgz#8b0eacd19cc9bcd1f14ca5dcaf7065ebd3186632"
+  integrity sha1-iw6s0ZzJvNHxTKXcr3Bl69MYZjI=
 
-"@sentry/utils@7.17.3":
-  version "7.17.3"
-  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/utils/-/utils-7.17.3.tgz#aafa67ed372f00be2e1bb490fa62d9d2d06a4c2f"
-  integrity sha1-qvpn7TcvAL4uG7SQ+mLZ0tBqTC8=
+"@sentry/utils@7.18.0":
+  version "7.18.0"
+  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/utils/-/utils-7.18.0.tgz#ede662acf8ac9af9a973d58e277d7afa77721b6c"
+  integrity sha1-7eZirPismvmpc9WOJ316+ndyG2w=
   dependencies:
-    "@sentry/types" "7.17.3"
+    "@sentry/types" "7.18.0"
     tslib "^1.9.3"
 
-"@sentry/vue@^7.17.3":
-  version "7.17.3"
-  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/vue/-/vue-7.17.3.tgz#c0a60b1e7ccc2966b4068ba78bf4ec35b58fce43"
-  integrity sha1-wKYLHnzMKWa0Bouni/TsNbWPzkM=
+"@sentry/vue@^7.18.0":
+  version "7.18.0"
+  resolved "https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@sentry/vue/-/vue-7.18.0.tgz#337f56f86adea316cb0d78a3bcacb31b5c777f3d"
+  integrity sha1-M39W+GreoxbLDXijvKyzG1x3fz0=
   dependencies:
-    "@sentry/browser" "7.17.3"
-    "@sentry/core" "7.17.3"
-    "@sentry/types" "7.17.3"
-    "@sentry/utils" "7.17.3"
+    "@sentry/browser" "7.18.0"
+    "@sentry/core" "7.18.0"
+    "@sentry/types" "7.18.0"
+    "@sentry/utils" "7.18.0"
     tslib "^1.9.3"
 
 "@sentry/webpack-plugin@^1.20.0":

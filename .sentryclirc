@@ -1,9 +1,9 @@
 # .sentryclirc
 
 [auth]
-token=2eba6e559b9e465d86e9281ce741b89b8520f4c3c34241a49cddfebe14e9c5f2
+token=f41d6820589a4be6a6b96617d9b157f84b5e53209eb9469d85fed1278c24f72a
 
 [defaults]
-url=http://127.0.0.1:9000/
-org=sentry
-project=vue
+url=https://sentry.io/
+org=destiny-7t
+project=javascript-vue
