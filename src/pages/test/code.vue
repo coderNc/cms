@@ -16,13 +16,30 @@
   </div> -->
   <div>
     <ElButton type="danger" @click="throwError">抛出错误</ElButton>
+    <ElButton type="success" @click="addLog">写日志到本地</ElButton>
+    <ElButton type="primary" @click="reportLog">发送日志</ElButton>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Logan from '@/global/logan';
+
 const throwError = (e: Event) => {
   console.log(e);
   throw new Error('Sentry Error 12312312323');
+};
+
+const addLog = () => {
+  const content = '手打哒哒哒哒哒哒都是hhhhhhhhhhasdahdhadhahdahdahd';
+  const type = 2;
+  Logan.log(content, type);
+};
+
+const reportLog = () => {
+  Logan.report({
+    fromDayString: '2022-11-10',
+    toDayString: '2022-11-11'
+  });
 };
 </script>
 
