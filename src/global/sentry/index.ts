@@ -19,9 +19,6 @@ export const sentryInit = (app: App, router: Router) => {
     ],
     // 不同的环境上报到不同的 environment 分类
     //   environment: process.env.ENVIRONMENT,
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
     //  高访问量应用可以控制上报百分比
     tracesSampleRate: 1.0,
     release: process.env.SENTRY_VERSION || '0.0.1', // 版本号，每次都npm run build上传都修改版本号
@@ -32,3 +29,5 @@ export const sentryInit = (app: App, router: Router) => {
     }
   });
 };
+
+export default Sentry;

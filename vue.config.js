@@ -3,7 +3,7 @@ const SentryCliPlugin = require('@sentry/webpack-plugin');
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
-  productionSourceMap: true,
+  productionSourceMap: process.env.NODE_ENV !== 'development',
   devServer: {
     proxy: {
       '^/api': {

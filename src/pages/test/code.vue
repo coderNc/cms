@@ -20,9 +20,19 @@
 </template>
 
 <script lang="ts" setup>
+import Sentry from '@/global/sentry';
+
 const throwError = (e: Event) => {
   console.log(e);
-  throw new Error('Sentry Error 12312312323');
+  Sentry.captureException(new Error('Sentry Error 12312312323'));
+  // Sentry.captureMessage('hello world', (scope) => {
+  //   scope.setContext('log', {
+  //     logDay: '2022-11-16',
+  //     logString: 'hahahhaaaaaaahahahhahahah'
+  //   });
+  //   scope.setLevel('debug');
+  //   return scope;
+  // });
 };
 </script>
 
