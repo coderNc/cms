@@ -30,7 +30,8 @@ import {
   ElBreadcrumbItem,
   ElTable,
   ElTableColumn,
-  ElPagination
+  ElPagination,
+  ElUpload
 } from 'element-plus';
 
 const components = [
@@ -63,7 +64,8 @@ const components = [
   ElBreadcrumbItem,
   ElTable,
   ElTableColumn,
-  ElPagination
+  ElPagination,
+  ElUpload
 ];
 
 export default function (app: App): void {

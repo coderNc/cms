@@ -9,8 +9,8 @@ const rrlog = (key: any, value: any) => {
 export const sentryInit = (app: App, router: Router) => {
   Sentry.init({
     app,
-    // dsn: 'http://68314a3acc034e228b20e1113ca6e45f@127.0.0.1:9000/2',
-    dsn: 'https://6fba18ce00524927aa4403de88411380@o4504089397886976.ingest.sentry.io/4504133558796288',
+    dsn: 'http://68314a3acc034e228b20e1113ca6e45f@127.0.0.1:9000/2',
+    // dsn: 'https://6fba18ce00524927aa4403de88411380@o4504089397886976.ingest.sentry.io/4504133558796288',
     integrations: [
       new Integrations.BrowserTracing({
         routingInstrumentation: Sentry.vueRouterInstrumentation(router),
@@ -21,7 +21,7 @@ export const sentryInit = (app: App, router: Router) => {
     //   environment: process.env.ENVIRONMENT,
     //  高访问量应用可以控制上报百分比
     tracesSampleRate: 1.0,
-    release: process.env.SENTRY_VERSION || '0.0.1', // 版本号，每次都npm run build上传都修改版本号
+    release: process.env.SENTRY_VERSION || '0.0.2', // 版本号，每次都npm run build上传都修改版本号
     beforeSend: (event, hint) => {
       rrlog('event', event);
       rrlog('hint', hint);
